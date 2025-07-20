@@ -1,0 +1,113 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background: linear-gradient(135deg, #1a1a2e, #16213e);
+    overflow: hidden;
+}
+
+.container {
+    background: #0f0e1a;
+    padding: 2rem;
+    border-radius: 1rem;
+    box-shadow: 0 0 20px rgba(0, 255, 255, 0.5), 0 0 40px rgba(255, 0, 255, 0.3);
+    text-align: center;
+    animation: glowPulse 2s ease-in-out infinite;
+}
+
+h1 {
+    color: #00ffcc;
+    text-shadow: 0 0 10px #00ffcc;
+    margin-bottom: 1rem;
+}
+
+.status {
+    font-size: 1.5rem;
+    color: #00ffcc;
+    text-shadow: 0 0 5px #00ffcc;
+    margin-bottom: 1rem;
+}
+
+.board {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    width: 300px;
+    margin: 0 auto;
+}
+
+.cell {
+    width: 100px;
+    height: 100px;
+    background: #1a1a2e;
+    border: none;
+    border-radius: 0.5rem;
+    font-size: 3rem;
+    color: #00ffcc;
+    text-shadow: 0 0 10px #00ffcc;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.cell:hover:not(:disabled) {
+    background: #2a2a4e;
+    box-shadow: 0 0 15px #00ffcc;
+    transform: scale(1.05);
+}
+
+.cell:disabled {
+    cursor: not-allowed;
+}
+
+.cell.x { color: #ff007a; text-shadow: 0 0 10px #ff007a; }
+.cell.o { color: #00ff00; text-shadow: 0 0 10px #00ff00; }
+
+.controls {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin-top: 1.5rem;
+}
+
+button {
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    border: none;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: #fff;
+}
+
+button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0 15px currentColor;
+}
+
+.reset-btn { background: #ff00ff; text-shadow: 0 0 10px #ff00ff; }
+.ai-btn { background: #00ff00; text-shadow: 0 0 10px #00ff00; }
+
+@keyframes glowPulse {
+    0% { box-shadow: 0 0 20px rgba(0, 255, 255, 0.5), 0 0 40px rgba(255, 0, 255, 0.3); }
+    50% { box-shadow: 0 0 30px rgba(0, 255, 255, 0.7), 0 0 60px rgba(255, 0, 255, 0.5); }
+    100% { box-shadow: 0 0 20px rgba(0, 255, 255, 0.5), 0 0 40px rgba(255, 0, 255, 0.3); }
+}
+
+@keyframes flicker {
+    0% { text-shadow: 0 0 10px #00ffcc, 0 0 20px #00ffcc; }
+    100% { text-shadow: 0 0 15px #00ffcc, 0 0 30px #00ffcc; }
+}
+
+@media (max-width: 480px) {
+    .container { padding: 1rem; }
+    .board { width: 240px; }
+    .cell { width: 80px; height: 80px; font-size: 2.5rem; }
+    .status { font-size: 1.2rem; }
+    button { padding: 0.5rem 1rem; font-size: 0.9rem; }
+}
